@@ -5,9 +5,9 @@ dest_dir="/usr/local/bin"
 
 set -e
 
-dest="${dest_dir}/tps"
+dest="${dest_dir}/btps"
 
-echo "copying 'tps.sh' to '${dest_dir}' as 'tps'..."
+echo "copying 'tps.sh' to '${dest_dir}' as 'btps'..."
 
 cp tps.sh "${dest}"
 chmod +x "${dest}"
