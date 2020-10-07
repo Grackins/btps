@@ -92,4 +92,4 @@ function _tps() {
 	done <<< "$(tps --bash-completion "${cword}" "${#LAST}" "${words[@]}")"
 }
 
-complete -o nospace -o bashdefault -F _tps tps
+complete -o nospace -o bashdefault -F _tps btps
