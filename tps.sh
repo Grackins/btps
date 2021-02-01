@@ -124,7 +124,6 @@ function __tps_find_basedir__ {
 		if [ -f "${__tps_curr__}/${__tps_target_file__}" ]; then
 			readonly __in_tps_repo__="true"
 			readonly BASE_DIR="${__tps_curr__}"
-			readonly __tps_scripts_dir__="${BASE_DIR}/${__tps_scripts__}"
 			return
 		fi
 		__tps_prev__="${__tps_curr__}"
@@ -156,11 +155,20 @@ export BASE_DIR
 export base_dir="${BASE_DIR}"
 
 
-if [ ! -d "${__tps_scripts_dir__}" ]; then
+# Find the scripts directory
+if [ -d "${BASE_DIR}/${__tps_scripts__}" ]; then
+    readonly __tps_scripts_dir__="${BASE_DIR}/${__tps_scripts__}"
+elif [ -n "${TPS_DEFAULT_SCRIPTS+0}" ]; then
+    if [ -d "${TPS_DEFAULT_SCRIPTS}" ]; then
+        readonly __tps_scripts_dir__="${TPS_DEFAULT_SCRIPTS}"
+    else
+        "${__tps_help_mode__}" && __tps__help_exit__ "In a TPS repository without '${__tps_scripts__}' directory and'${TPS_DEFAULT_SCRIPTS}' not a valid directory."
+        __tps__error_exit__ 2 "Directory '${TPS_DEFAULT_SCRIPTS}' not found."
+    fi
+else
 	"${__tps_help_mode__}" && __tps__help_exit__ "In a TPS repository without directory '${__tps_scripts__}'."
 	__tps__error_exit__ 2 "Directory '${__tps_scripts__}' not found."
 fi
-
 
 readonly __tps_runnable_extensions__=("sh" "py" "exe")
 
