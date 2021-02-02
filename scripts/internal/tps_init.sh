@@ -35,7 +35,7 @@ fi
 export PYTHON
 
 
-source "${BASE_DIR}/scripts/internal/locations.sh"
+source "${SCRIPTS}/internal/locations.sh"
 source "${INTERNALS}/problem_data.sh"
 
 if [ -n "${PYTHONPATH+x}" ]; then

@@ -170,6 +170,8 @@ else
 	__tps__error_exit__ 2 "Directory '${__tps_scripts__}' not found."
 fi
 
+export SCRIPTS="${__tps_scripts_dir__}"
+
 readonly __tps_runnable_extensions__=("sh" "py" "exe")
 
 function __tps_run_file__ {
@@ -238,7 +240,7 @@ if "${__tps_help_mode__}"; then
 	available_commands="$(__tps_list_commands__)"
 	readonly available_commands
 	if [ -z "${available_commands}" ]; then
-		readonly commands_info="In a TPS repository with no commands available in '${__tps_scripts__}'."
+		readonly commands_info="In a TPS repository with no commands available in '${__tps_scripts_dir__}'."
 	else
 		function add_prefix {
 			local -r prefix="$1"; shift
@@ -278,7 +280,7 @@ if [ -z "${__tps_command_file_name__}" ]; then
 		[ -n "${searched_files}" ] && searched_files="${searched_files}, "
 		searched_files="${searched_files}'${__tps_command__}.${ext}'"
 	done
-	__tps__error_exit__ 2 "Command '${__tps_command__}' not found in '${__tps_scripts__}'.
+	__tps__error_exit__ 2 "Command '${__tps_command__}' not found in '${__tps_scripts_dir__}'.
 Searched for ${searched_files}."
 fi
 
@@ -310,13 +312,12 @@ if "${__tps_bash_completion_mode__}"; then
 fi
 
 
-readonly __tps_init_relative_path__="${__tps_scripts__}/internal/tps_init.sh"
-readonly __tps_init_file__="${BASE_DIR}/${__tps_init_relative_path__}"
+readonly __tps_init_file__="${__tps_scripts_dir__}/internal/tps_init.sh"
 
 if [ -f "${__tps_init_file__}" ]; then
 	source "${__tps_init_file__}"
 else
-	: "File '${__tps_init_relative_path__}' not found."
+	: "File '${__tps_init_file__}' not found."
 fi
 
 

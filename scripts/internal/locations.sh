@@ -5,8 +5,6 @@ PROBLEM_JSON="${BASE_DIR}/problem.json"
 SOLUTIONS_JSON="${BASE_DIR}/solutions.json"
 SUBTASKS_JSON="${BASE_DIR}/subtasks.json"
 
-SCRIPTS_NAME="scripts"
-SCRIPTS="${BASE_DIR}/${SCRIPTS_NAME}"
 INTERNALS="${SCRIPTS}/internal"
 TEMPLATES="${SCRIPTS}/templates"
 

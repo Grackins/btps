@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-readonly __tps_init_file__="${BASE_DIR}/scripts/internal/tps_init.sh"
+readonly __tps_init_file__="${SCRIPTS}/internal/tps_init.sh"
 if [ -f "${__tps_init_file__}" ]; then
 	source "${__tps_init_file__}"
 fi
