@@ -19,9 +19,9 @@ function __tps__errcho__ {
 if [ $# -eq 0 ]; then
 	readonly __tps_help_mode__="true"
 	echo "\
-TPS version ${tps_version}
+bTPS version ${tps_version}
 
-Usage: tps <command> <arguments>...
+Usage: btps <command> <arguments>...
 "
 	function __tps__help_exit__ {
 		local -r message="$1"; shift
